@@ -1,0 +1,24 @@
+menu "Light Controller Configuration"
+    config INBOUND_WIFI_SSID
+        string "Inbound WiFi SSID"
+        default "Light Configuration"
+        help
+            WiFi SSID of the network that the light will expose for configuration
+    
+    config INBOUND_WIFI_PASSWORD
+        string "Inbound WiFi Password"
+        default "password"
+        help
+            WiFi Password for the network exposed by the light for configuration
+
+    config OUTBOUND_WIFI_SSID
+        string "Outbound WiFi SSID"
+        default "Free Internet"
+        help
+            WiFi SSID of the network that the light will use to pull data from the internet
+
+    config OUTBOUND_WIFI_PASSWORD
+        string "Outbound WiFi Password"
+        help
+            WiFi Password for the network the light will use to pull data from the internet
+endmenu

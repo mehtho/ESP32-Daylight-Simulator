@@ -1,4 +1,5 @@
 #include "light.h"
+#include "esp_log.h"
 #include "driver/ledc.h"
 
 #define LEDC_TIMER        LEDC_TIMER_0
@@ -14,6 +15,8 @@
 #define PWM_RED     (21)
 #define PWM_GREEN   (19)
 #define PWM_BLUE    (18)
+
+static const char* TAG = "Lights";
 
 void init_gpio_pwm(void){
     ledc_timer_config_t ledc_timer = {
@@ -57,6 +60,7 @@ void init_gpio_pwm(void){
         .intr_type  = LEDC_INTR_DISABLE
     };
     ledc_channel_config(&ledc_channel_b);
+    ESP_LOGI(TAG, "Initialised LEDs");
 }
 
 void set_lights(int r, int g, int b) {
@@ -68,4 +72,6 @@ void set_lights(int r, int g, int b) {
 
     ledc_set_duty(LEDC_MODE, LEDC_CHANNEL_2, b);
     ledc_update_duty(LEDC_MODE, LEDC_CHANNEL_2);
+
+    ESP_LOGI(TAG, "Set R%d G%d B%d", r, g, b);
 }

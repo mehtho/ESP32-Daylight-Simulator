@@ -1,7 +1,5 @@
-set(component_srcs "src/wifi_ap.c")
-
-idf_component_register(SRCS "${component_srcs}"
+idf_component_register(SRCS "src/wifi_ap.c" "src/wifi_sta.c"
                 INCLUDE_DIRS "include"
                 PRIV_INCLUDE_DIRS ""
-                PRIV_REQUIRES ""
+                PRIV_REQUIRES "driver" "esp_wifi" "nvs_flash"
                 REQUIRES "")
