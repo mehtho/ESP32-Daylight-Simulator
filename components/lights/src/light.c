@@ -1,3 +1,4 @@
+#include "stdint.h"
 #include "light.h"
 #include "esp_log.h"
 #include "driver/ledc.h"
@@ -63,7 +64,7 @@ void init_gpio_pwm(void){
     ESP_LOGI(TAG, "Initialised LEDs");
 }
 
-void set_lights(int r, int g, int b) {
+void set_lights(uint32_t r, uint32_t g, uint32_t b) {
     ledc_set_duty(LEDC_MODE, LEDC_CHANNEL_0, r);
     ledc_update_duty(LEDC_MODE, LEDC_CHANNEL_0);
 
@@ -73,5 +74,5 @@ void set_lights(int r, int g, int b) {
     ledc_set_duty(LEDC_MODE, LEDC_CHANNEL_2, b);
     ledc_update_duty(LEDC_MODE, LEDC_CHANNEL_2);
 
-    ESP_LOGI(TAG, "Set R%d G%d B%d", r, g, b);
+    ESP_LOGI(TAG, "Set R%lu G%lu B%lu", (unsigned long)r, (unsigned long)g, (unsigned long)b);
 }

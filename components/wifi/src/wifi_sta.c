@@ -6,6 +6,7 @@
 #include "esp_netif_sntp.h"
 #include "esp_event.h"
 #include "freertos/event_groups.h"
+#include "misc_functions.h"
 
 #define WIFI_CONNECTED_BIT      BIT0
 #define WIFI_FAIL_BIT           BIT1
@@ -39,10 +40,8 @@ static void event_handler(void* arg, esp_event_base_t event_base,
 
 void start_wifi_sta(void) {
     ESP_LOGI(TAG, "Beginning WiFi configuration");
-    ESP_ERROR_CHECK(nvs_flash_init());
+    ESP_ERROR_CHECK(nvs_init());
     ESP_ERROR_CHECK(esp_netif_init());
-    ESP_ERROR_CHECK(esp_event_loop_create_default());
-
     esp_netif_create_default_wifi_sta();
 
     wifi_init_config_t init_cfg = WIFI_INIT_CONFIG_DEFAULT();

@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "esp_event.h"
+
 #include "light.h"
 #include "wifi_ap.h"
 #include "wifi_sta.h"
@@ -14,6 +16,8 @@
 */
 void app_main(void)
 {
+    esp_event_loop_create_default();
+
     init_gpio_pwm();
 
     start_wifi_sta();
