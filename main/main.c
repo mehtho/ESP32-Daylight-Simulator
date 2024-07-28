@@ -15,7 +15,10 @@
 void app_main(void)
 {
     init_gpio_pwm();
-    init_wifi_sta();
-    deinit_wifi_sta();
+
+    start_wifi_sta();
+    sync_time_with_sntp();
+    stop_wifi_sta();
+
     init_wifi_ap();
 }

@@ -7,7 +7,6 @@ menu "Light Controller Configuration"
     
     config INBOUND_WIFI_PASSWORD
         string "Inbound WiFi Password"
-        default "password"
         help
             WiFi Password for the network exposed by the light for configuration
 
@@ -21,4 +20,22 @@ menu "Light Controller Configuration"
         string "Outbound WiFi Password"
         help
             WiFi Password for the network the light will use to pull data from the internet
+
+    config SNTP_SERVER_HOSTNAME
+        string "SNTP Server Hostname"
+        default "time.nist.gov"
+        help
+            Hostname for the SNTP server
+
+    config WIFI_MAX_RETRIES
+        int "WiFi max retries"
+        default 3
+        help
+            Maximum number of times the device will attempt to connect to WiFi
+    
+    config SNTP_MAX_RETRIES
+        int "SNTP max retries"
+        default 3
+        help
+            Maximum number of times the device will attempt to synchronize time over SNTP
 endmenu
