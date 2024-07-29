@@ -12,6 +12,7 @@
 #define WIFI_FAIL_BIT           BIT1
 
 static const char* TAG = "WiFi_STA";
+
 static EventGroupHandle_t s_wifi_event_group;
 static int wifi_retry_count = 0;
 static bool is_wifi_shutting_down = false;
